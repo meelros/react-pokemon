@@ -1,0 +1,38 @@
+.main {
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    .itemsBlock {
+        align-items: center;
+        flex-direction: column;
+        display: flex;
+        order: 1;
+        width: 70%;
+        margin-left: 5rem;
+        .loadBtn {
+            display: flex;
+            font-size: 1rem;
+            width: 60%;
+            height: 3rem;
+            justify-content: center;
+            cursor: pointer;
+            border: 0;
+            color: #ffffff;
+            border-radius: 10px;
+            background-color: rgb(79, 158, 248);
+        }
+        .loadBtn:active {
+            background-color: rgb(32, 122, 224);
+        }
+    }
+    .infoBlock {
+        flex-direction: column;
+        text-align: center;
+        display: flex;
+        order: 2;
+        width: 60%;
+        justify-content: flex-start;
+        margin-top: 3rem;
+    }
+    
+}

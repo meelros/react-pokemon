@@ -1,0 +1,22 @@
+.pokemon-info {
+    height: 30rem;
+    width: 20rem;
+    border: 1px solid black;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    .avatar {
+        margin-top: 1rem;
+        display: flex;
+        width: 18rem;
+        height: 10rem;
+        border: .5px solid black;
+    }
+    .name {
+        margin-top: .7rem;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-transform: capitalize;
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+}
