@@ -1,0 +1,73 @@
+.pokemon-card {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 14rem;
+    width: 9rem;
+    border: 1.5px solid black;
+    align-items: center;
+    
+    .avatar {
+        margin-top: .6rem;
+        display: flex;
+        width: 7.5rem;
+        height: 7.5rem;
+        border: .5px solid black;
+    }
+    .name {
+        margin-top: .5rem;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-transform: capitalize;
+        font-size: .75rem;
+        font-weight: bold;
+    }
+    .skills {
+        .type {
+            margin-top: .5rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-transform: capitalize;
+            text-align: center;
+            line-height: 1.5rem;
+            width: 3.3rem;
+            height: 1.4rem;
+            color: black;
+            border-radius: .3rem;
+            font-size: .8rem;
+        }
+
+        .type-fire {
+            background-image: linear-gradient(white, rgb(211, 88, 88));
+            border: 1px solid rgb(211, 88, 88);
+        }
+
+        .type-poison {
+            background-image: linear-gradient(white, rgb(142, 83, 156));
+            border: 1px solid rgb(142, 83, 156);
+        }
+
+        .type-grass {
+            background-image: linear-gradient(white, rgb(113, 170, 105));
+            border: 1px solid rgb(113, 170, 105);
+        }
+
+        .type-water {
+            background-image: linear-gradient(white, rgb(71, 154, 187));
+            border: 1px solid rgb(71, 154, 187);
+        }
+
+        .type-bug {
+            background-image: linear-gradient(white, rgb(97, 84, 119));
+            border: 1px solid rgb(97, 84, 119);
+        }
+
+        .type-flying {
+            background-image: linear-gradient(white, rgb(144, 202, 206));
+            border: 1px solid rgb(144, 202, 206);
+        }
+
+        .type-electric {
+            background-image: linear-gradient(white, rgb(218, 219, 119));
+            border: 1px solid rgb(218, 219, 119);
+        }
+    }
+}

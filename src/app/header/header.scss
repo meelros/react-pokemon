@@ -1,0 +1,16 @@
+.header {
+    margin-top: 3rem;
+    border: 2px solid black;
+    height: 4rem;
+    width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+    
+    h2 {
+        display: flex;
+        justify-content: center;
+        font-weight: normal;
+        font-family: monospace;
+        font-size: 2rem;
+    }
+}
