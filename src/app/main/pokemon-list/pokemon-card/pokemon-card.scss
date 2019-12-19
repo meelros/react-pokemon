@@ -6,13 +6,15 @@
     width: 9rem;
     border: 1.5px solid black;
     align-items: center;
-    
     .avatar {
         margin-top: .6rem;
         display: flex;
         width: 7.5rem;
         height: 7.5rem;
         border: .5px solid black;
+        img {
+            height: 100%;
+        }
     }
     .name {
         margin-top: .5rem;
@@ -68,6 +70,61 @@
         .type-electric {
             background-image: linear-gradient(white, rgb(218, 219, 119));
             border: 1px solid rgb(218, 219, 119);
+        }
+
+        .type-normal {
+            background-image: linear-gradient(white, rgb(167, 144, 109));
+            border: 1px solid rgb(167, 144, 109);
+        }
+
+        .type-ground {
+            background-image: linear-gradient(white, rgb(104, 89, 56));
+            border: 1px solid rgb(104, 89, 56);
+        }
+
+        .type-fairy {
+            background-image: linear-gradient(white, rgb(201, 132, 178));
+            border: 1px solid rgb(201, 132, 178);
+        }
+
+        .type-fighting {
+            background-image: linear-gradient(white, rgb(124, 62, 67));
+            border: 1px solid rgb(124, 62, 67);
+        }
+
+        .type-psychic {
+            background-image: linear-gradient(white, rgb(182, 196, 121));
+            border: 1px solid rgb(182, 196, 121);
+        }
+
+        .type-rock {
+            background-image: linear-gradient(white, rgb(116, 114, 99));
+            border: 1px solid rgb(116, 114, 99);
+        }
+
+        .type-steel {
+            background-image: linear-gradient(white, rgb(151, 151, 147));
+            border: 1px solid rgb(151, 151, 147);
+        }
+
+        .type-ice {
+            background-image: linear-gradient(white, rgb(166, 201, 233));
+            border: 1px solid rgb(166, 201, 233);
+        }
+
+        .type-ghost {
+            background-image: linear-gradient(white, rgb(166, 130, 175));
+            border: 1px solid rgb(166, 130, 175);
+        }
+
+        .type-dragon {
+            background-image: linear-gradient(white, rgb(117, 27, 42));
+            border: 1px solid rgb(117, 27, 42);
+        }
+
+        .type-dark {
+            background-image: linear-gradient(white, rgb(139, 139, 139));
+            border: 1px solid rgb(139, 139, 139);
         }
     }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import './pokemon-card.scss';
 
 class PokemonCard extends React.Component {
@@ -7,7 +8,8 @@ class PokemonCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {pokemonInfo: {}};
-    this.getPokemonInfo.bind(this);
+    this.getPokemonInfo = this.getPokemonInfo.bind(this);
+    this.storePokemonInfo = this.storePokemonInfo.bind(this);
   }
 
   componentDidMount() {
@@ -23,13 +25,19 @@ class PokemonCard extends React.Component {
       }
   }
 
+  storePokemonInfo() {
+    this.props.addInfo(this.state.pokemonInfo);
+  }
+
   render() {
-    if (!this.state.pokemonInfo) {
-        return null;
-    }
     return (
-        <div className="pokemon-card">
-            <div className="avatar"></div>
+        <div className="pokemon-card" onClick={this.storePokemonInfo}>
+            <div className="avatar">
+              {this.state.pokemonInfo && this.state.pokemonInfo.sprites
+                ? <img src={this.state.pokemonInfo.sprites.front_default} alt="Pokemon"></img>
+                : null
+              }    
+            </div>
             <div className="name">
                 {this.state.pokemonInfo.name}
             </div>
@@ -48,4 +56,13 @@ class PokemonCard extends React.Component {
   }
 }
 
-export default PokemonCard;
+export default connect(
+  state => ({
+    store: state
+  }),
+  dispatch => ({
+    addInfo: (info) => {
+      dispatch({type: 'SET_INFO', info});
+    }
+  })
+)(PokemonCard);
