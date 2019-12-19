@@ -9,7 +9,8 @@ class Main extends React.Component {
   constructor (props) {
     super(props);
     this.state = {pokemons: []};
-    this.getPokemonList.bind(this);
+    this.getPokemonList = this.getPokemonList.bind(this);
+    this.preparePokemonsData = this.preparePokemonsData.bind(this);
   }
 
   componentDidMount() {
@@ -17,10 +18,16 @@ class Main extends React.Component {
   }
 
   getPokemonList() {
-    axios.get('https://pokeapi.co/api/v2/pokemon?limit=12')
+    const limit = this.state.pokemons.length ? this.state.pokemons.length + 12 : 12;
+    axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`)
       .then(
-        response => this.setState({pokemons: this.state.pokemons.concat(response.data.results)}),
+        response => this.preparePokemonsData(response.data.results, limit),
         error => console.log(error));
+  }
+
+  preparePokemonsData(results, limit) {
+    const newPokemons = limit === 12 ? results : results.slice(Math.max(results.length - 12, 1));
+    this.setState({pokemons: this.state.pokemons.concat(newPokemons)});
   }
 
   render() {
@@ -33,7 +40,7 @@ class Main extends React.Component {
               <PokemonList pokemons={this.state.pokemons}/>
               <input type="button"
                      value="Load More"
-                     onClick={() => this.getPokemonList()} 
+                     onClick={this.getPokemonList} 
                      className="loadBtn"/>
           </div>
           <div className="infoBlock">

@@ -1,6 +1,6 @@
 .pokemon-info {
     height: 30rem;
-    width: 20rem;
+    width: 16rem;
     border: 1px solid black;
     align-items: center;
     display: flex;
@@ -8,9 +8,14 @@
     .avatar {
         margin-top: 1rem;
         display: flex;
-        width: 18rem;
+        width: 14rem;
         height: 10rem;
         border: .5px solid black;
+        img {
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
+        }
     }
     .name {
         margin-top: .7rem;
@@ -18,5 +23,21 @@
         text-transform: capitalize;
         font-size: 1.1rem;
         font-weight: bold;
+    }
+    .stats {
+        margin-top: 1rem;
+        font-weight: normal;
+        font-size: .7rem;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        table {
+            border-collapse: collapse;
+            td, th {
+                text-transform: capitalize;
+                border: 1px solid black;
+                text-align: left;
+                padding: .4rem;
+              }
+        }
+        
     }
 }
