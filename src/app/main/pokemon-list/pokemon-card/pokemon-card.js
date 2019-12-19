@@ -21,7 +21,7 @@ class PokemonCard extends React.Component {
       if (this.props.pokemon) {
         axios.get(this.props.pokemon.url)
         .then(
-            response => this.setState({pokemonInfo: Object.assign(this.state.pokemonInfo, response.data)}),
+            response => this.setState({pokemonInfo: {...this.state.pokemonInfo, ...response.data}}),
             error => console.log(error));
       }
   }

@@ -19,7 +19,8 @@ class Main extends React.Component {
 
   getPokemonList() {
     const limit = this.state.pokemons.length ? this.state.pokemons.length + 12 : 12;
-    axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`)
+    const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}`;
+    axios.get(url)
       .then(
         response => this.preparePokemonsData(response.data.results, limit),
         error => console.log(error));
