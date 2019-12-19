@@ -1,4 +1,5 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 function setPokemonInfo(state={}, action) {
     if (action.type === 'SET_INFO') {
@@ -7,6 +8,6 @@ function setPokemonInfo(state={}, action) {
     return state;
 }
 
-const store = createStore(setPokemonInfo);
+const store = createStore(setPokemonInfo, applyMiddleware(thunk));
 
 export default store;

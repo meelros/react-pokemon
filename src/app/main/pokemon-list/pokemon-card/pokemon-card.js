@@ -10,6 +10,7 @@ class PokemonCard extends React.Component {
     this.state = {pokemonInfo: {}};
     this.getPokemonInfo = this.getPokemonInfo.bind(this);
     this.storePokemonInfo = this.storePokemonInfo.bind(this);
+    this.storeAsyncPokemonInfo = this.storeAsyncPokemonInfo.bind(this);
   }
 
   componentDidMount() {
@@ -29,9 +30,13 @@ class PokemonCard extends React.Component {
     this.props.addInfo(this.state.pokemonInfo);
   }
 
+  storeAsyncPokemonInfo() {
+    this.props.addAsyncInfo(this.state.pokemonInfo);
+  }
+
   render() {
     return (
-        <div className="pokemon-card" onClick={this.storePokemonInfo}>
+        <div className="pokemon-card" onClick={this.storePokemonInfo} onContextMenu={this.storeAsyncPokemonInfo}>
             <div className="avatar">
               {this.state.pokemonInfo && this.state.pokemonInfo.sprites
                 ? <img src={this.state.pokemonInfo.sprites.front_default} alt="Pokemon"></img>
@@ -63,6 +68,14 @@ export default connect(
   dispatch => ({
     addInfo: (info) => {
       dispatch({type: 'SET_INFO', info});
+    },
+    addAsyncInfo: (info) => {
+      const asyncGetInfo = () => dispatch => {
+        setTimeout(() => {
+          dispatch({type: 'SET_INFO', info});
+        }, 1000);
+      };
+      dispatch(asyncGetInfo());
     }
   })
 )(PokemonCard);
