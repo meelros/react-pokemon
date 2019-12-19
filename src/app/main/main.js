@@ -27,7 +27,7 @@ class Main extends React.Component {
 
   preparePokemonsData(results, limit) {
     const newPokemons = limit === 12 ? results : results.slice(Math.max(results.length - 12, 1));
-    this.setState({pokemons: this.state.pokemons.concat(newPokemons)});
+    this.setState({pokemons: [...this.state.pokemons, ...newPokemons]});
   }
 
   render() {
