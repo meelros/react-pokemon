@@ -4,11 +4,6 @@ import './pokemon-info.scss';
 
 class PokemonInfo extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.getStat = this.getStat.bind(this);
-  }
-
   getStat(statName) {
     let statValue;
     this.props.store.pokemonInfo.stats.map(statItem => {
