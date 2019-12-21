@@ -4,36 +4,36 @@ import './pokemon-info.scss';
 
 class PokemonInfo extends React.Component {
 
-  getStat(statName) {
+  getStat = (statName) => {
     let statValue;
-    this.props.store.pokemonInfo.stats.map(statItem => {
+    this.props.info.pokemonInfo.stats.forEach(statItem => {
       if (statItem.stat.name === statName) {
         statValue = statItem.base_stat;
+        return;
       }
-      return null;
     });
     return statValue;
   }
 
   render() {
-    if (!this.props.store.pokemonInfo) {
+    if (!this.props.info.pokemonInfo.name) {
       return null;
     }
 
     return (
         <div className="pokemon-info">
             <div className="avatar">
-              <img src={this.props.store.pokemonInfo.sprites.front_default} alt="Pokemon"></img>
+              <img src={this.props.info.pokemonInfo.sprites.front_default} alt="Pokemon"></img>
             </div>
             <div className="name">
-               {this.props.store.pokemonInfo.name}
+               {this.props.info.pokemonInfo.name}
             </div>
             <div className="stats">
               <table>
                 <tbody>
                   <tr>
                     <th>Type</th>
-                    <th>{this.props.store.pokemonInfo.types.map(typeInfo => `${typeInfo.type.name} `)}</th>
+                    <th>{this.props.info.pokemonInfo.types.map(typeInfo => `${typeInfo.type.name} `)}</th>
                   </tr>
                   <tr>
                     <th>Attack</th>
@@ -61,11 +61,11 @@ class PokemonInfo extends React.Component {
                   </tr>
                   <tr>
                     <th>Weight</th>
-                    <th>{this.props.store.pokemonInfo.weight}</th>
+                    <th>{this.props.info.pokemonInfo.weight}</th>
                   </tr>
                   <tr>
                     <th>Total moves</th>
-                    <th>{this.props.store.pokemonInfo.moves.length}</th>
+                    <th>{this.props.info.pokemonInfo.moves.length}</th>
                   </tr>
                 </tbody>
               </table>
@@ -75,6 +75,13 @@ class PokemonInfo extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    info: state.info
+  };
+};
+
 export default connect(
-  state => ({store: state})
+  mapStateToProps,
+  null
 )(PokemonInfo);

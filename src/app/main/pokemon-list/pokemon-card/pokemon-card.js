@@ -8,16 +8,13 @@ class PokemonCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {pokemonInfo: {}};
-    this.getPokemonInfo = this.getPokemonInfo.bind(this);
-    this.storePokemonInfo = this.storePokemonInfo.bind(this);
-    this.storeAsyncPokemonInfo = this.storeAsyncPokemonInfo.bind(this);
   }
 
   componentDidMount() {
       this.getPokemonInfo()
   }
 
-  getPokemonInfo() {
+  getPokemonInfo = () => {
       if (this.props.pokemon) {
         axios.get(this.props.pokemon.url)
         .then(
@@ -26,19 +23,19 @@ class PokemonCard extends React.Component {
       }
   }
 
-  storePokemonInfo() {
+  storePokemonInfo = () => {
     this.props.addInfo(this.state.pokemonInfo);
   }
 
-  storeAsyncPokemonInfo() {
+  storeAsyncPokemonInfo = () => {
     this.props.addAsyncInfo(this.state.pokemonInfo);
   }
 
   render() {
     return (
-        <div className="pokemon-card" onClick={this.storePokemonInfo} onContextMenu={this.storeAsyncPokemonInfo}>
+        <div className="pokemon-card" onClick={this.storePokemonInfo}>
             <div className="avatar">
-              {this.state.pokemonInfo && this.state.pokemonInfo.sprites
+              {this.state.pokemonInfo.sprites
                 ? <img src={this.state.pokemonInfo.sprites.front_default} alt="Pokemon"></img>
                 : null
               }    
@@ -47,7 +44,7 @@ class PokemonCard extends React.Component {
                 {this.state.pokemonInfo.name}
             </div>
             <div className="skills">
-                {this.state.pokemonInfo && this.state.pokemonInfo.types 
+                {this.state.pokemonInfo.types 
                     ? this.state.pokemonInfo.types.map(typeInfo => 
                         <div key={typeInfo.type.name} 
                              className={`type type-${typeInfo.type.name}`}>{typeInfo.type.name}
@@ -61,21 +58,15 @@ class PokemonCard extends React.Component {
   }
 }
 
-export default connect(
-  state => ({
-    store: state
-  }),
-  dispatch => ({
+const mapDispatchToProps = (dispatch) => {
+  return {
     addInfo: (info) => {
       dispatch({type: 'SET_INFO', info});
-    },
-    addAsyncInfo: (info) => {
-      const asyncGetInfo = () => dispatch => {
-        setTimeout(() => {
-          dispatch({type: 'SET_INFO', info});
-        }, 1000);
-      };
-      dispatch(asyncGetInfo());
     }
-  })
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
 )(PokemonCard);
