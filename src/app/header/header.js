@@ -1,10 +1,10 @@
 import React from 'react';
-import './header.scss';
+import headerStyles from './header.module.css';
 
 function Header() {
   return (
-    <div className="header">
-        <h2>Pokedex</h2>
+    <div className={headerStyles.header}>
+        <h2 className={headerStyles.h2}>Pokedex</h2>
     </div>
   );
 }
